@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_view_consumer/providers/foods_provider.dart';
+import 'package:food_add_cart/providers/foods_provider.dart';
+
 
 
 import 'package:provider/provider.dart';

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_view_consumer/widgets/food_grid.dart';
-
-
+import 'package:food_add_cart/providers/cart.dart';
+import 'package:food_add_cart/widgets/badge.dart';
+import 'package:food_add_cart/widgets/food_grid.dart';
+import 'package:provider/provider.dart';
 
 class FoodsOverviewScreen extends StatelessWidget {
   @override
@@ -10,10 +11,16 @@ class FoodsOverviewScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Food Order'),
         actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            color: Colors.white,
-            onPressed: () {},
+          Consumer<Cart>(
+            builder: (context, CartProvider, child) => Badge(
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                color: Colors.white,
+                onPressed: () {},
+              ),
+              value: CartProvider.itemCount.toString(),
+              color: Colors.black,
+            ),
           ),
         ],
       ),

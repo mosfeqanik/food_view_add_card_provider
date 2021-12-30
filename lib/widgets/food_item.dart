@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_view_consumer/providers/food.dart';
-import 'package:food_view_consumer/screens/food_detail_page.dart';
+import 'package:food_add_cart/providers/cart.dart';
+import 'package:food_add_cart/providers/food.dart';
+import 'package:food_add_cart/screens/food_detail_page.dart';
+
 import 'package:provider/provider.dart';
 
 class FoodItem extends StatelessWidget {
@@ -8,6 +10,7 @@ class FoodItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context,listen: false);
     return Consumer<Food>(
       builder: (context, FoodProvider, child) {
         return ClipRRect(
@@ -41,7 +44,9 @@ class FoodItem extends StatelessWidget {
                 icon: Icon(
                   Icons.shopping_cart,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  cart.addItem(FoodProvider.id, FoodProvider.price, FoodProvider.title);
+                },
                 color: Theme.of(context).colorScheme.secondary,
               ),
             ),
